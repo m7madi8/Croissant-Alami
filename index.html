@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="كرواسون العلامي — قائمة طعام كاملة: معجنات، مخبوزات، كرواسون، دونات، حلويات، ومشروبات طازجة يومياً.">
+  <meta name="theme-color" content="#5C3F2E">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="كرواسون العلامي - قائمة الطعام">
+  <meta property="og:description" content="طعم أصيل.. فرحة حقيقية. كرواسون طازج محضر يومياً.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_AR">
+  <title>كرواسون العلامي | قائمة الطعام</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-brown: #5C3F2E;
+      --brown: #7D5A44;
+      --medium-brown: #A67B5B;
+      --croissant-beige: #E5B286;
+      --gold: #D4A574;
+      --light-beige: #F5E6D3;
+      --cream: #FFFBF7;
+      --white: #FFFFFF;
+      --shadow: 0 4px 24px rgba(44, 28, 18, 0.18);
+      --shadow-lg: 0 20px 50px rgba(44, 28, 18, 0.28);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --nav-h: 72px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --font: 'Cairo', system-ui, sans-serif;
+      /* Menu palette */
+      --menu-paper: #FFFDF9;
+      --menu-paper-2: #F8F1E8;
+      --menu-ink: #2E2118;
+      --menu-ink-soft: #5C4A3D;
+      --menu-ink-muted: #8A7768;
+      --menu-line: #E5D9CC;
+      --menu-line-soft: #F0E8DE;
+      --menu-accent: #7D5A44;
+      --menu-accent-dark: #4A3225;
+      --menu-gold: #C9956A;
+      --menu-gold-light: #E8C9A0;
+      --menu-price-bg: #F3E6D6;
+      --menu-price-text: #6B4428;
+      --menu-chip-bg: #F5EDE3;
+      --menu-chip-border: #DEC9B4;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--dark-brown);
+      color: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    ul { list-style: none; }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      right: 16px;
+      background: var(--croissant-beige);
+      color: var(--dark-brown);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      z-index: 10000;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 16px; outline: 3px solid var(--gold); }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--nav-h);
+      z-index: 10000;
+      overflow: visible;
+      background: rgba(92, 63, 46, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(229, 178, 134, 0.15);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(92, 63, 46, 0.96);
+      box-shadow: var(--shadow);
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(16px, 4vw, 40px);
+      gap: 20px;
+    }
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--croissant-beige);
+      white-space: nowrap;
+    }
+    .nav__brand-icon { font-size: 1.5rem; line-height: 1; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav__links a {
+      text-decoration: none;
+      color: rgba(255, 251, 247, 0.9);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav__links a:hover,
+    .nav__links a.active {
+      color: var(--dark-brown);
+      background: var(--croissant-beige);
+    }
+
+    /* ─── Mobile menu button & drawer ─── */
+    .mob-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(229, 178, 134, 0.35);
+      border-radius: 12px;
+      background: rgba(229, 178, 134, 0.12);
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition), transform 0.2s;
+    }
+    .mob-menu-btn:hover {
+      background: rgba(229, 178, 134, 0.22);
+      border-color: var(--croissant-beige);
+    }
+    .mob-menu-btn:active { transform: scale(0.96); }
+    .mob-menu-btn:focus-visible {
+      outline: 3px solid var(--croissant-beige);
+      outline-offset: 2px;
+    }
+    .mob-menu-btn__icon {
+      width: 20px;
+      height: 14px;
+      position: relative;
+      display: block;
+    }
+    .mob-menu-btn__icon span {
+      position: absolute;
+      right: 0;
+      left: 0;
+      height: 2px;
+      background: var(--croissant-beige);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition), top var(--transition);
+    }
+    .mob-menu-btn__icon span:nth-child(1) { top: 0; }
+    .mob-menu-btn__icon span:nth-child(2) { top: 6px; }
+    .mob-menu-btn__icon span:nth-child(3) { top: 12px; }
+    .mob-menu-btn[aria-expanded="true"] .mob-menu-btn__icon span:nth-child(1) {
+      top: 6px;
+      transform: rotate(45deg);
+    }
+    .mob-menu-btn[aria-expanded="true"] .mob-menu-btn__icon span:nth-child(2) {
+      opacity: 0;
+    }
+    .mob-menu-btn[aria-expanded="true"] .mob-menu-btn__icon span:nth-child(3) {
+      top: 6px;
+      transform: rotate(-45deg);
+    }
+
+    .mob-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .mob-menu.open {
+      pointer-events: auto;
+      visibility: visible;
+    }
+    .mob-menu__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 28, 18, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mob-menu.open .mob-menu__backdrop { opacity: 1; }
+    .mob-menu__panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(300px, 86vw);
+      height: 100%;
+      background: linear-gradient(180deg, #FFFBF7 0%, #F8EFE3 50%, #F0E2D0 100%);
+      color: var(--dark-brown);
+      display: flex;
+      flex-direction: column;
+      padding: max(16px, env(safe-area-inset-top)) 0 max(20px, env(safe-area-inset-bottom));
+      box-shadow: -12px 0 48px rgba(44, 28, 18, 0.25);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .mob-menu.open .mob-menu__panel { transform: translateX(0); }
+    .mob-menu__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px 20px;
+      border-bottom: 1px solid rgba(125, 90, 68, 0.12);
+    }
+    .mob-menu__title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--brown);
+    }
+    .mob-menu__close {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(125, 90, 68, 0.08);
+      color: var(--brown);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .mob-menu__close:hover { background: rgba(125, 90, 68, 0.15); }
+    .mob-menu__nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .mob-menu__nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--dark-brown);
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mob-menu__nav a:hover,
+    .mob-menu__nav a.active {
+      background: rgba(229, 178, 134, 0.35);
+      color: var(--dark-brown);
+    }
+    .mob-menu__nav-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(125, 90, 68, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .mob-menu__divider {
+      height: 1px;
+      background: rgba(125, 90, 68, 0.1);
+      margin: 8px 8px;
+    }
+    .mob-menu__label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--medium-brown);
+      padding: 8px 16px 4px;
+      letter-spacing: 0.04em;
+    }
+    .mob-menu__cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 16px 8px;
+    }
+    .mob-menu__cat {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(125, 90, 68, 0.07);
+      border: 1px solid rgba(125, 90, 68, 0.12);
+      color: var(--brown);
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .mob-menu__cat:hover {
+      background: var(--croissant-beige);
+      border-color: var(--croissant-beige);
+      color: var(--dark-brown);
+    }
+    .mob-menu__foot {
+      padding: 16px 20px 0;
+      border-top: 1px solid rgba(125, 90, 68, 0.1);
+    }
+    .mob-menu__cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--croissant-beige), var(--gold));
+      color: var(--dark-brown);
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(229, 178, 134, 0.35);
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 40px) 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(229, 178, 134, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(212, 165, 116, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 35% at 10% 80%, rgba(166, 123, 91, 0.15) 0%, transparent 50%),
+        linear-gradient(165deg, #6B4A38 0%, var(--dark-brown) 45%, #4A3225 100%);
+      z-index: 0;
+    }
+    .hero__grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(229, 178, 134, 0.15);
+      border: 1px solid rgba(229, 178, 134, 0.35);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--croissant-beige);
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease-out both;
+    }
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #7ed957;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .hero__logo-wrap {
+      margin: 0 auto 32px;
+      width: min(260px, 55vw);
+      aspect-ratio: 1;
+      animation: fadeUp 0.8s 0.1s ease-out both, float 5s ease-in-out infinite 1s;
+    }
+    .hero__logo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--croissant-beige) 0%, var(--gold) 50%, #c9956a 100%);
+      padding: 18px;
+      box-shadow:
+        0 0 0 4px rgba(229, 178, 134, 0.25),
+        0 24px 60px rgba(0, 0, 0, 0.35),
+        inset 0 -8px 24px rgba(92, 63, 46, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero__logo::after {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+      animation: shine 4s ease-in-out infinite;
+    }
+    .hero__logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__logo-fallback {
+      font-size: 5rem;
+      line-height: 1;
+      z-index: 1;
+      position: relative;
+    }
+    .hero__title {
+      font-size: clamp(2.2rem, 6vw, 3.75rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      margin-bottom: 16px;
+      animation: fadeUp 0.8s 0.2s ease-out both;
+    }
+    .hero__subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      color: var(--croissant-beige);
+      font-weight: 500;
+      margin-bottom: 20px;
+      animation: fadeUp 0.8s 0.3s ease-out both;
+    }
+    .hero__tagline {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(245, 230, 211, 0.9);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      animation: fadeUp 0.8s 0.4s ease-out both;
+    }
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.5s ease-out both;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--croissant-beige);
+      outline-offset: 3px;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--croissant-beige), var(--gold));
+      color: var(--dark-brown);
+      box-shadow: 0 8px 28px rgba(229, 178, 134, 0.4);
+    }
+    .btn--primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(229, 178, 134, 0.5);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(229, 178, 134, 0.6);
+    }
+    .btn--outline:hover {
+      background: rgba(229, 178, 134, 0.12);
+      border-color: var(--croissant-beige);
+      transform: translateY(-2px);
+    }
+    .hero__scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--croissant-beige);
+      animation: bounce 2.5s ease-in-out infinite;
+      z-index: 2;
+      opacity: 0.8;
+    }
+
+    /* ─── Features strip ─── */
+    .features {
+      background: rgba(0, 0, 0, 0.2);
+      border-block: 1px solid rgba(229, 178, 134, 0.12);
+      padding: 48px 24px;
+    }
+    .features__grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+    .feature {
+      text-align: center;
+      padding: 24px 16px;
+      border-radius: var(--radius);
+      background: rgba(125, 90, 68, 0.35);
+      border: 1px solid rgba(229, 178, 134, 0.12);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229, 178, 134, 0.35);
+    }
+    .feature__icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .feature__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--croissant-beige);
+      margin-bottom: 8px;
+    }
+    .feature__text {
+      font-size: 0.9rem;
+      color: rgba(245, 230, 211, 0.85);
+    }
+
+    /* ─── Sections common ─── */
+    .section {
+      padding: clamp(64px, 10vw, 100px) 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section--alt {
+      max-width: none;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.15) 50%, transparent);
+    }
+    .section__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section__label {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: var(--croissant-beige);
+      margin-bottom: 12px;
+    }
+    .section__desc {
+      font-size: 1.05rem;
+      color: rgba(245, 230, 211, 0.85);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── Menu redesign ─── */
+    #menu {
+      padding-bottom: clamp(80px, 12vw, 110px);
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(229, 178, 134, 0.12) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.18) 100%);
+    }
+    #menu .section__header { margin-bottom: 40px; }
+    #menu .section__label { color: var(--menu-gold-light); }
+    #menu .section__title {
+      font-weight: 700;
+      color: var(--cream);
+    }
+    #menu .section__desc { color: rgba(245, 230, 211, 0.88); }
+
+    .menu-panel {
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--menu-paper);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px var(--menu-line),
+        0 32px 80px rgba(30, 20, 12, 0.35);
+    }
+    .menu-panel__bar {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 50;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, var(--menu-paper) 85%, rgba(255,253,249,0.97) 100%);
+      border-bottom: 1px solid var(--menu-line);
+      backdrop-filter: blur(10px);
+    }
+    .menu-filter {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 2px;
+    }
+    .menu-filter::-webkit-scrollbar { display: none; }
+    .menu-filter__btn {
+      flex-shrink: 0;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--menu-line);
+      background: var(--menu-paper-2);
+      color: var(--menu-ink-soft);
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .menu-filter__btn:hover {
+      border-color: var(--menu-gold);
+      color: var(--menu-accent);
+      background: #fff;
+    }
+    .menu-filter__btn.active {
+      background: linear-gradient(135deg, var(--menu-accent) 0%, var(--menu-accent-dark) 100%);
+      border-color: transparent;
+      color: var(--cream);
+      box-shadow: 0 6px 20px rgba(74, 50, 37, 0.28);
+    }
+    .menu-categories {
+      padding: 8px 20px 28px;
+    }
+    .menu-category {
+      margin-bottom: 20px;
+      scroll-margin-top: calc(var(--nav-h) + 80px);
+      background: #fff;
+      border: 1px solid var(--menu-line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(46, 33, 24, 0.04);
+    }
+    .menu-category.hidden { display: none; }
+    .menu-category:last-child { margin-bottom: 0; }
+    .menu-category__head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: linear-gradient(90deg, var(--menu-paper-2) 0%, #fff 100%);
+      border-bottom: 1px solid var(--menu-line-soft);
+    }
+    .menu-category__icon {
+      font-size: 1.35rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--menu-gold-light), var(--menu-gold));
+      border-radius: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(201, 149, 106, 0.35);
+    }
+    .menu-category__title {
+      font-family: 'Noto Naskh Arabic', var(--font);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--menu-ink);
+    }
+    .menu-sub {
+      padding: 8px 14px 4px;
+    }
+    .menu-category > .menu-sub:first-of-type {
+      padding-top: 14px;
+    }
+    .menu-sub:last-child { padding-bottom: 14px; }
+    .menu-sub__title {
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--menu-accent);
+      padding: 0 4px 10px;
+      margin-bottom: 0;
+      border: none;
+      background: none;
+      display: block;
+    }
+    .menu-sub__title::before { display: none; }
+    .menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--menu-line-soft);
+      overflow: hidden;
+      margin: 0 4px 12px;
+    }
+    .menu-sub > .card--combo:only-child,
+    .menu-sub > .card--combo:first-child:last-child {
+      margin: 0 4px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--menu-line-soft);
+    }
+    .menu-sub > .card--combo {
+      margin: 0 4px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--menu-line-soft);
+      overflow: hidden;
+    }
+    .card {
+      position: relative;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.15s ease;
+      background: #fff;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:nth-child(even) { background: var(--menu-paper); }
+    .card + .card { border-top: 1px solid var(--menu-line-soft); }
+    .card:hover { background: var(--menu-paper-2); }
+    .card__inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-height: 54px;
+      padding: 2px 14px;
+    }
+    .card:has(.card__prices) .card__inner,
+    .card--combo .card__inner {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: unset;
+      padding: 14px 16px;
+    }
+    .card__header {
+      flex: 1;
+      display: flex;
+      align-items: baseline;
+      padding: 10px 0;
+      min-width: 0;
+      border: none;
+      text-align: right;
+    }
+    .card:has(.card__prices) .card__header,
+    .card--combo .card__header { padding: 0 0 8px; }
+    .card:has(.card__prices) .card__header::after,
+    .card--combo .card__header::after { display: none; }
+    .card__header::after {
+      content: '';
+      flex: 1;
+      min-width: 16px;
+      margin: 0 10px 4px;
+      border-bottom: 1px dotted var(--menu-line);
+    }
+    .card__name {
+      font-family: 'Noto Naskh Arabic', var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--menu-ink);
+      line-height: 1.5;
+      margin: 0;
+      flex-shrink: 0;
+      max-width: 72%;
+    }
+    .card--combo .card__name {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--menu-accent);
+      max-width: 100%;
+    }
+    .card__footer {
+      flex-shrink: 0;
+      padding: 6px 0;
+      background: none;
+    }
+    .card:has(.card__prices) .card__footer,
+    .card--combo .card__footer { width: 100%; padding: 0; }
+    .card__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+    }
+    .card__amount-row {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 2px;
+      background: var(--menu-price-bg);
+      padding: 6px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--menu-chip-border);
+    }
+    .card__amount {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--menu-price-text);
+      font-variant-numeric: tabular-nums;
+    }
+    .card__currency {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--menu-gold);
+    }
+    .card__unit {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--menu-ink-muted);
+      background: var(--menu-chip-bg);
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--menu-line);
+      white-space: nowrap;
+    }
+    .card__flavors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 0 12px;
+    }
+    .card__flavors span {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--menu-ink-soft);
+      padding: 6px 12px;
+      background: var(--menu-chip-bg);
+      border: 1px solid var(--menu-chip-border);
+      border-radius: 8px;
+    }
+    .card__prices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+    }
+    @media (max-width: 400px) {
+      .card__prices { grid-template-columns: 1fr; }
+    }
+    .price-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--menu-paper-2);
+      border: 1px solid var(--menu-line);
+      border-radius: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .price-pill:hover {
+      border-color: var(--menu-gold);
+      background: var(--menu-price-bg);
+    }
+    .price-pill__label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--menu-ink-muted);
+    }
+    .price-pill__value {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--menu-price-text);
+      font-variant-numeric: tabular-nums;
+    }
+    .price-pill em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--menu-ink-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ─── Contact ─── */
+    .contact {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .contact-card {
+      background: rgba(125, 90, 68, 0.55);
+      border: 1px solid rgba(229, 178, 134, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      transition: var(--transition);
+    }
+    .contact-card:hover {
+      border-color: var(--croissant-beige);
+      transform: translateY(-4px);
+    }
+    .contact-card__icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .contact-card__title {
+      font-weight: 700;
+      color: var(--croissant-beige);
+      margin-bottom: 8px;
+    }
+    .contact-card__value {
+      font-size: 1.05rem;
+      color: var(--cream);
+    }
+    .contact-card a.contact-card__value {
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-card a.contact-card__value:hover { color: var(--croissant-beige); }
+
+    /* ─── Footer ─── */
+    .footer {
+      background: rgba(44, 28, 18, 0.95);
+      border-top: 1px solid rgba(229, 178, 134, 0.15);
+      padding: 48px 24px 32px;
+      margin-top: 40px;
+    }
+    .footer__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer__brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--croissant-beige);
+    }
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer__links a {
+      text-decoration: none;
+      color: rgba(245, 230, 211, 0.8);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .footer__links a:hover { color: var(--croissant-beige); }
+    .footer__copy {
+      width: 100%;
+      text-align: center;
+      padding-top: 28px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(229, 178, 134, 0.1);
+      font-size: 0.9rem;
+      color: rgba(245, 230, 211, 0.6);
+    }
+
+    /* ─── Back to top ─── */
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--croissant-beige);
+      color: var(--dark-brown);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: var(--transition);
+      z-index: 9000;
+    }
+    .back-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-top:hover { transform: translateY(-4px); }
+    .back-top:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes shine {
+      0%, 100% { transform: translateX(-120%) rotate(25deg); }
+      50% { transform: translateX(120%) rotate(25deg); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+      .mob-menu-btn { display: flex; }
+      .nav__inner {
+        flex-wrap: nowrap;
+        height: 100%;
+        min-height: unset;
+        padding-bottom: 0;
+      }
+      .nav__brand { font-size: 1rem; }
+      .nav { height: var(--nav-h); min-height: unset; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --nav-h: 64px; }
+      .hero__actions { flex-direction: column; width: 100%; }
+      .hero__actions .btn { width: 100%; }
+      .menu-panel { border-radius: 18px; }
+      .menu-panel__bar { padding: 12px 14px; }
+      .menu-categories { padding: 6px 12px 20px; }
+      .menu-category__head { padding: 14px; }
+      .menu-filter__btn { padding: 9px 14px; font-size: 0.82rem; }
+      .card__name { font-size: 0.94rem; max-width: 58%; }
+      .card__amount { font-size: 1.08rem; }
+      .card__header::after { margin: 0 6px 4px; }
+      .back-top { bottom: 16px; left: 16px; width: 44px; height: 44px; }
+    }
+
+    @media print {
+      .nav, .mob-menu, .back-top, .hero__scroll, .menu-filter, .skip-link { display: none !important; }
+      body { background: white; color: black; }
+      .menu-panel, .menu-panel__bar { box-shadow: none; }
+      .menu-panel { border: 1px solid #ddd; }
+      .card { break-inside: avoid; opacity: 1 !important; transform: none !important; }
+      .hero { min-height: auto; padding-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#hero" class="skip-link">تخطي إلى المحتوى</a>
+
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand" aria-label="كرواسون العلامي - الرئيسية">
+        <span class="nav__brand-icon" aria-hidden="true">🥐</span>
+        <span>كرواسون العلامي</span>
+      </a>
+      <nav class="nav__links" aria-label="التنقل الرئيسي">
+        <a href="#hero">الرئيسية</a>
+        <a href="#menu">القائمة</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+      <button type="button" class="mob-menu-btn" id="mobMenuBtn" aria-expanded="false" aria-controls="mobMenu" aria-label="فتح القائمة">
+        <span class="mob-menu-btn__icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mob-menu" id="mobMenu" aria-hidden="true">
+    <div class="mob-menu__backdrop" id="mobMenuBackdrop"></div>
+    <div class="mob-menu__panel" role="dialog" aria-modal="true" aria-label="قائمة التنقل">
+      <div class="mob-menu__head">
+        <span class="mob-menu__title">🥐 كرواسون العلامي</span>
+        <button type="button" class="mob-menu__close" id="mobMenuClose" aria-label="إغلاق القائمة">×</button>
+      </div>
+      <nav class="mob-menu__nav" aria-label="روابط الموقع">
+        <a href="#hero"><span class="mob-menu__nav-icon">🏠</span> الرئيسية</a>
+        <a href="#menu"><span class="mob-menu__nav-icon">📋</span> قائمة الطعام</a>
+        <a href="#contact"><span class="mob-menu__nav-icon">📞</span> تواصل معنا</a>
+      </nav>
+      <p class="mob-menu__label">فئات القائمة</p>
+      <div class="mob-menu__cats">
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="معجنات">🍕 معجنات</a>
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="مخبوزات">🍞 مخبوزات</a>
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="كرواسون">🥐 كرواسون</a>
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="دونات">🍩 دونات</a>
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="حلويات">🍪 حلويات</a>
+        <a href="#menu" class="mob-menu__cat" data-goto-cat="مشروبات">☕ مشروبات</a>
+      </div>
+      <div class="mob-menu__foot">
+        <a href="#contact" class="mob-menu__cta">تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          <span>طازج يومياً — محضّر بحب</span>
+        </div>
+        <div class="hero__logo-wrap">
+          <div class="hero__logo">
+            <img src="0.png" alt="شعار كرواسون العلامي" width="220" height="220" loading="eager" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="hero__logo-fallback" style="display:none" aria-hidden="true">🥐</span>
+          </div>
+        </div>
+        <h1 class="hero__title" id="hero-title">كرواسون العلامي</h1>
+        <p class="hero__subtitle">طعم أصيل.. فرحة حقيقية</p>
+        <p class="hero__tagline">استمتع بأجود أنواع الكرواسون الطازج، محضّر يومياً بأيدي خبراء الحلويات من أجود المكونات الطبيعية.</p>
+        <div class="hero__actions">
+          <a href="#menu" class="btn btn--primary">استكشف القائمة</a>
+          <a href="#contact" class="btn btn--outline">تواصل معنا</a>
+        </div>
+      </div>
+      <a href="#features" class="hero__scroll" aria-label="انتقل للأسفل">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </a>
+    </section>
+
+    <section class="features" id="features" aria-label="مميزاتنا">
+      <div class="features__grid">
+        <article class="feature reveal">
+          <span class="feature__icon" aria-hidden="true">🌾</span>
+          <h3 class="feature__title">مكونات طبيعية</h3>
+          <p class="feature__text">زبدة فرنسية أصيلة ودقيق فاخر في كل قطعة</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon" aria-hidden="true">⏰</span>
+          <h3 class="feature__title">خبز يومي</h3>
+          <p class="feature__text">كرواسون طازج من الفرن كل صباح</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon" aria-hidden="true">👨‍🍳</span>
+          <h3 class="feature__title">حرفية عالية</h3>
+          <p class="feature__text">وصفات تقليدية بأيدي خبراء الحلويات</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon" aria-hidden="true">💛</span>
+          <h3 class="feature__title">تجربة مميزة</h3>
+          <p class="feature__text">نكهات متنوعة تناسب كل الأذواق</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="menu" aria-labelledby="menu-title">
+      <div class="section__header reveal">
+        <span class="section__label">قائمة الطعام</span>
+        <h2 class="section__title" id="menu-title">قائمة الطعام</h2>
+        <p class="section__desc">تشكيلة منتقاة بعناية — أسعار واضحة وتجربة قراءة مريحة</p>
+      </div>
+
+      <div class="menu-panel reveal">
+        <div class="menu-panel__bar">
+        <div class="menu-filter" role="tablist" aria-label="تصفية القائمة">
+          <button class="menu-filter__btn active" type="button" data-filter="all" role="tab" aria-selected="true">الكل</button>
+          <button class="menu-filter__btn" type="button" data-filter="معجنات" role="tab" aria-selected="false">معجنات</button>
+          <button class="menu-filter__btn" type="button" data-filter="مخبوزات" role="tab" aria-selected="false">مخبوزات</button>
+          <button class="menu-filter__btn" type="button" data-filter="بوريكس" role="tab" aria-selected="false">بوريكس</button>
+          <button class="menu-filter__btn" type="button" data-filter="كرواسون" role="tab" aria-selected="false">كرواسون</button>
+          <button class="menu-filter__btn" type="button" data-filter="دونات" role="tab" aria-selected="false">دونات</button>
+          <button class="menu-filter__btn" type="button" data-filter="عقوت" role="tab" aria-selected="false">عقوت</button>
+          <button class="menu-filter__btn" type="button" data-filter="كت كات" role="tab" aria-selected="false">كت كات</button>
+          <button class="menu-filter__btn" type="button" data-filter="بيني فور" role="tab" aria-selected="false">بيني فور</button>
+          <button class="menu-filter__btn" type="button" data-filter="حلويات" role="tab" aria-selected="false">حلويات</button>
+          <button class="menu-filter__btn" type="button" data-filter="مشروبات" role="tab" aria-selected="false">مشروبات</button>
+        </div>
+        </div>
+
+        <div class="menu-categories">
+
+        <div class="menu-category" data-category="معجنات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍕</span>
+            <div><h3 class="menu-category__title">المعجنات</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">بيتزا خضار</h4><div class="card__prices"><div class="price-pill"><em>صغير</em> 2 ₪</div><div class="price-pill"><em>وسط</em> 5 ₪</div></div></article>
+            <article class="card"><h4 class="card__name">بيتزا دجاج مكسيكي</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">بيتزا صفيحة</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">بيتزا نقانق</h4><div class="card__price">2 <small>₪</small></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="مخبوزات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍞</span>
+            <div><h3 class="menu-category__title">المخبوزات</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">خبز الشوفان</h4><div class="card__price">5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">خبز طابون</h4><div class="card__price">5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">خبز شراك</h4><div class="card__price">5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">خبز قمح</h4><div class="card__price">4.5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">خبز برغر</h4><div class="card__price">5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">خبز حمام</h4><div class="card__price">5 <small>₪</small> <span class="card__price-note">/ ربطة</span></div></article>
+            <article class="card"><h4 class="card__name">كعك أصفر</h4><div class="card__price">2 <small>₪</small> <span class="card__price-note">/ حبة</span></div></article>
+            <article class="card"><h4 class="card__name">كعك القدس</h4><div class="card__price">2.5 <small>₪</small> <span class="card__price-note">/ حبة</span></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="بوريكس">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🥐</span>
+            <div><h3 class="menu-category__title">البوريكس</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">بوريكس جبنة</h4><div class="card__price">30 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">بوريكس بطاطا</h4><div class="card__price">30 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="كرواسون">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🥐</span>
+            <div><h3 class="menu-category__title">الكرواسون</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">كرواسون بستاشيو</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">كرواسون فراولة</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">كرواسون كندر</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">كرواسون شوكولاته</h4><div class="card__price">5 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">كرواسون لوتس</h4><div class="card__price">5 <small>₪</small></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="دونات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍩</span>
+            <div><h3 class="menu-category__title">الدونات</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">دونات بستاشيو</h4><div class="card__price">3 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">دونات فراولة</h4><div class="card__price">3 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">دونات كندر</h4><div class="card__price">3 <small>₪</small></div></article>
+            <article class="card"><h4 class="card__name">دونات شوكولاته</h4><div class="card__price">3 <small>₪</small></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="عقوت">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🎂</span>
+            <div><h3 class="menu-category__title">العقوت</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">عقوت كستر أبيض</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">عقوت كستر أصفر</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">عقوت بلوبري</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">عقوت فراولة</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">عقوت كراميل</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">عقوت تفاح</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="كت كات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍫</span>
+            <div><h3 class="menu-category__title">الكت كات</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">كت كات شوكولاته</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">كت كات فراولة</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">كت كات بلوبري</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">كت كات كستر أصفر</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="بيني فور">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍰</span>
+            <div><h3 class="menu-category__title">البيني فور</h3></div>
+          </div>
+          <div class="menu-grid">
+            <article class="card"><h4 class="card__name">بيني فور فراولة</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+            <article class="card"><h4 class="card__name">بيني فور شوكولاته</h4><div class="card__price">25 <small>₪</small> <span class="card__price-note">/ كيلو</span></div></article>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="حلويات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">🍪</span>
+            <div><h3 class="menu-category__title">الحلويات</h3></div>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">كرشلة</h4>
+            <article class="card card--combo">
+              <div class="card__inner">
+                <div class="card__header"><h4 class="card__name">كرشلة</h4></div>
+                <div class="card__flavors" aria-label="النكهات المتوفرة">
+                  <span>يانسون</span>
+                  <span>حبة البركة</span>
+                  <span>سمسم</span>
+                  <span>سادة</span>
+                </div>
+                <div class="card__footer">
+                  <div class="card__prices">
+                    <div class="price-pill"><em>علبة</em> 10 ₪</div>
+                    <div class="price-pill"><em>كيلو</em> 12 ₪</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">كوكيز</h4>
+            <article class="card card--combo">
+              <div class="card__inner">
+                <div class="card__header"><h4 class="card__name">كوكيز</h4></div>
+                <div class="card__flavors" aria-label="النكهات المتوفرة">
+                  <span>شوكولاته</span>
+                  <span>نسكافيه</span>
+                  <span>أوريو</span>
+                </div>
+                <div class="card__footer">
+                  <div class="card__price">
+                    <div class="card__amount-row">
+                      <span class="card__amount">25</span>
+                      <span class="card__currency">₪</span>
+                    </div>
+                    <span class="card__unit">/ كيلو</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">حلويات تقليدية</h4>
+            <div class="menu-grid">
+              <article class="card"><h4 class="card__name">معمول بطحين — عجوة</h4><div class="card__prices"><div class="price-pill"><em>علبة</em> 10 ₪</div><div class="price-pill"><em>كيلو</em> 25 ₪</div></div></article>
+              <article class="card card--combo">
+                <div class="card__inner">
+                  <div class="card__header"><h4 class="card__name">برازق</h4></div>
+                  <div class="card__flavors" aria-label="الأنواع">
+                    <span>عجوة</span>
+                    <span>بدون عجوة</span>
+                  </div>
+                  <div class="card__footer">
+                    <div class="card__prices">
+                      <div class="price-pill"><em>علبة</em> 10 ₪</div>
+                      <div class="price-pill"><em>كيلو</em> 25 ₪</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="card"><h4 class="card__name">غربية</h4><div class="card__prices"><div class="price-pill"><em>علبة</em> 10 ₪</div><div class="price-pill"><em>كيلو</em> 25 ₪</div></div></article>
+              <article class="card card--combo">
+                <div class="card__inner">
+                  <div class="card__header"><h4 class="card__name">كلير</h4></div>
+                  <div class="card__flavors" aria-label="الأنواع">
+                    <span>كستر أصفر</span>
+                    <span>كريما بيضاء</span>
+                  </div>
+                  <div class="card__footer">
+                    <div class="card__price">
+                      <div class="card__amount-row">
+                        <span class="card__amount">10</span>
+                        <span class="card__currency">₪</span>
+                      </div>
+                      <span class="card__unit">/ علبة</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="مشروبات">
+          <div class="menu-category__head reveal">
+            <span class="menu-category__icon" aria-hidden="true">☕</span>
+            <div><h3 class="menu-category__title">المشروبات</h3></div>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">قهوة</h4>
+            <div class="menu-grid">
+              <article class="card"><h4 class="card__name">إسبريسو</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">أمريكانو</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">أفوخ</h4><div class="card__price">5 <small>₪</small></div></article>
+            </div>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">ساخنة</h4>
+            <div class="menu-grid">
+              <article class="card"><h4 class="card__name">لاتيه فانيلا</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">لاتيه بندق</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">شوكو</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">هوت شوكليت</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">شوكولاته سويسرية</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">كراميل لاتيه</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">سولتد كراميل</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">شاي لاتيه</h4><div class="card__price">5 <small>₪</small></div></article>
+            </div>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">باردة</h4>
+            <div class="menu-grid">
+              <article class="card"><h4 class="card__name">آيس فانيلا</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">آيس كوفي</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">آيس بطيخ</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">آيس عنب</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">آيس تي خوخ</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">آيس تي شاي</h4><div class="card__price">5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">ماء صغير</h4><div class="card__price">1.5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">عصير عنب / برتقال</h4><div class="card__price">1.5 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">بلو / بلو داي / بلو نعنع</h4><div class="card__price">4 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">هايبي / كوول</h4><div class="card__prices"><div class="price-pill"><em>صغير</em> 1 ₪</div><div class="price-pill"><em>كبير</em> 2 ₪</div></div></article>
+              <article class="card"><h4 class="card__name">XL</h4><div class="card__price">4 <small>₪</small></div></article>
+              <article class="card"><h4 class="card__name">سفن أب / بيبسي</h4><div class="card__price">1 <small>₪</small> <span class="card__price-note">/ صغير</span></div></article>
+            </div>
+          </div>
+
+          <div class="menu-sub">
+            <h4 class="menu-sub__title">مقبلات</h4>
+            <div class="menu-grid">
+              <article class="card"><h4 class="card__name">تاسكو</h4><div class="card__price">4 <small>₪</small></div></article>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="contact">
+        <div class="section__header reveal">
+          <span class="section__label">تواصل معنا</span>
+          <h2 class="section__title" id="contact-title">نحن في انتظارك</h2>
+          <p class="section__desc">للطلبات والاستفسارات — تواصل معنا بأي طريقة تناسبك</p>
+        </div>
+        <div class="contact__cards">
+          <article class="contact-card reveal">
+            <div class="contact-card__icon" aria-hidden="true">📍</div>
+            <h3 class="contact-card__title">الموقع</h3>
+            <p class="contact-card__value">كرواسون العلامي — المحل الرئيسي</p>
+          </article>
+          <article class="contact-card reveal">
+            <div class="contact-card__icon" aria-hidden="true">🕐</div>
+            <h3 class="contact-card__title">ساعات العمل</h3>
+            <p class="contact-card__value">يومياً: 7:00 ص — 10:00 م</p>
+          </article>
+          <article class="contact-card reveal">
+            <div class="contact-card__icon" aria-hidden="true">📱</div>
+            <h3 class="contact-card__title">واتساب / هاتف</h3>
+            <a href="tel:+970000000000" class="contact-card__value">اضغط للاتصال</a>
+          </article>
+        </div>
+        <div class="hero__actions reveal" style="margin-top:40px">
+          <a href="#menu" class="btn btn--primary">عرض القائمة</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">🥐 كرواسون العلامي</div>
+      <nav class="footer__links" aria-label="روابط التذييل">
+        <a href="#hero">الرئيسية</a>
+        <a href="#menu">القائمة</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+      <p class="footer__copy">&copy; 2026 كرواسون العلامي. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-top" id="backTop" aria-label="العودة للأعلى" title="العودة للأعلى">↑</button>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const nav = document.getElementById('nav');
+      const mobMenuBtn = document.getElementById('mobMenuBtn');
+      const mobMenu = document.getElementById('mobMenu');
+      const mobMenuClose = document.getElementById('mobMenuClose');
+      const mobMenuBackdrop = document.getElementById('mobMenuBackdrop');
+      const backTop = document.getElementById('backTop');
+      const sections = document.querySelectorAll('section[id]');
+      const navAnchors = document.querySelectorAll('.nav__links a[href^="#"], .mob-menu__nav a[href^="#"]');
+
+      /* Nav scroll state */
+      function onScroll() {
+        const y = window.scrollY;
+        nav.classList.toggle('scrolled', y > 40);
+        backTop.classList.toggle('visible', y > 500);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* Mobile drawer menu */
+      function setMobMenuOpen(open) {
+        mobMenu.classList.toggle('open', open);
+        mobMenuBtn.setAttribute('aria-expanded', String(open));
+        mobMenu.setAttribute('aria-hidden', String(!open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      mobMenuBtn.addEventListener('click', () => setMobMenuOpen(!mobMenu.classList.contains('open')));
+      mobMenuClose.addEventListener('click', () => setMobMenuOpen(false));
+      mobMenuBackdrop.addEventListener('click', () => setMobMenuOpen(false));
+      mobMenu.querySelectorAll('.mob-menu__nav a, .mob-menu__cta').forEach(a => {
+        a.addEventListener('click', () => setMobMenuOpen(false));
+      });
+      document.querySelectorAll('.mob-menu__cat').forEach(cat => {
+        cat.addEventListener('click', (e) => {
+          e.preventDefault();
+          const filterName = cat.dataset.gotoCat;
+          setMobMenuOpen(false);
+          const menuSection = document.getElementById('menu');
+          const filterBtn = document.querySelector(`.menu-filter__btn[data-filter="${filterName}"]`);
+          if (filterBtn) filterBtn.click();
+          if (menuSection) {
+            setTimeout(() => menuSection.scrollIntoView({ behavior: 'smooth' }), 150);
+          }
+        });
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && mobMenu.classList.contains('open')) setMobMenuOpen(false);
+      });
+
+      /* Smooth scroll */
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const id = this.getAttribute('href');
+          if (id === '#') return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10);
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+
+      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      /* Scroll spy */
+      const observerNav = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navAnchors.forEach(a => {
+            const match = a.getAttribute('href') === '#' + id;
+            a.classList.toggle('active', match);
+            if (match) a.setAttribute('aria-current', 'page');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+      sections.forEach(s => observerNav.observe(s));
+
+      /* Reveal on scroll */
+      const revealEls = document.querySelectorAll('.reveal, .card');
+      const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(el => revealObs.observe(el));
+
+      /* Menu filter */
+      const filterBtns = document.querySelectorAll('.menu-filter__btn');
+      const categories = document.querySelectorAll('.menu-category');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          filterBtns.forEach(b => {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+          categories.forEach(cat => {
+            const show = filter === 'all' || cat.dataset.category === filter;
+            cat.classList.toggle('hidden', !show);
+            if (show && filter !== 'all') {
+              setTimeout(() => cat.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+            }
+          });
+        });
+      });
+
+      /* Stagger cards */
+      document.querySelectorAll('.menu-grid').forEach(grid => {
+        grid.querySelectorAll('.card').forEach((card, i) => {
+          card.style.transitionDelay = (i * 0.05) + 's';
+        });
+      });
+
+      /* Enhance menu cards layout */
+      function enhanceMenuCards() {
+        document.querySelectorAll('.price-pill').forEach(pill => {
+          if (pill.querySelector('.price-pill__value')) return;
+          const em = pill.querySelector('em');
+          if (!em) return;
+          const label = em.textContent.trim();
+          em.remove();
+          const value = pill.textContent.trim();
+          pill.textContent = '';
+          const lbl = document.createElement('span');
+          lbl.className = 'price-pill__label';
+          lbl.textContent = label;
+          const val = document.createElement('span');
+          val.className = 'price-pill__value';
+          val.textContent = value;
+          pill.appendChild(lbl);
+          pill.appendChild(val);
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+          if (card.querySelector('.card__inner')) return;
+          const name = card.querySelector('.card__name');
+          const price = card.querySelector('.card__price');
+          const prices = card.querySelector('.card__prices');
+          if (!name) return;
+
+          const inner = document.createElement('div');
+          inner.className = 'card__inner';
+          const header = document.createElement('div');
+          header.className = 'card__header';
+          header.appendChild(name);
+          const footer = document.createElement('div');
+          footer.className = 'card__footer';
+          if (price) footer.appendChild(price);
+          if (prices) footer.appendChild(prices);
+          inner.appendChild(header);
+          inner.appendChild(footer);
+          card.appendChild(inner);
+        });
+
+        document.querySelectorAll('.card__price').forEach(box => {
+          if (box.querySelector('.card__amount')) return;
+          const note = box.querySelector('.card__price-note');
+          const unit = note ? note.textContent.trim() : '';
+          if (note) note.remove();
+          const small = box.querySelector('small');
+          if (small) small.remove();
+          const amount = box.textContent.trim();
+          box.textContent = '';
+          box.innerHTML =
+            '<div class="card__amount-row">' +
+              '<span class="card__amount">' + amount + '</span>' +
+              '<span class="card__currency">₪</span>' +
+            '</div>' +
+            (unit ? '<span class="card__unit">' + unit + '</span>' : '');
+        });
+      }
+      enhanceMenuCards();
+    })();
+  </script>
+</body>
+</html>
