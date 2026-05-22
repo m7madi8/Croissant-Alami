@@ -539,47 +539,6 @@
       opacity: 0.8;
     }
 
-    /* ─── Features strip ─── */
-    .features {
-      background: rgba(0, 0, 0, 0.2);
-      border-block: 1px solid rgba(229, 178, 134, 0.12);
-      padding: 48px 24px;
-    }
-    .features__grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-    }
-    .feature {
-      text-align: center;
-      padding: 24px 16px;
-      border-radius: var(--radius);
-      background: rgba(125, 90, 68, 0.35);
-      border: 1px solid rgba(229, 178, 134, 0.12);
-      transition: transform var(--transition), border-color var(--transition);
-    }
-    .feature:hover {
-      transform: translateY(-4px);
-      border-color: rgba(229, 178, 134, 0.35);
-    }
-    .feature__icon {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .feature__title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--croissant-beige);
-      margin-bottom: 8px;
-    }
-    .feature__text {
-      font-size: 0.9rem;
-      color: rgba(245, 230, 211, 0.85);
-    }
-
     /* ─── Sections common ─── */
     .section {
       padding: clamp(64px, 10vw, 100px) 24px;
@@ -616,62 +575,40 @@
       margin: 0 auto;
     }
 
-    /* ─── Menu — mobile-first app style ─── */
+    /* ─── Menu — mobile-first, brown theme ─── */
     #menu {
       padding: 0 0 clamp(72px, 14vw, 96px);
       max-width: none;
-      background: var(--m-bg);
     }
     #menu.section--alt {
-      background: var(--m-bg);
+      background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.14) 100%);
     }
     #menu .section__header {
-      margin-bottom: 20px;
-      padding: 28px 20px 8px;
-      background: linear-gradient(180deg, var(--dark-brown) 0%, #6B4E3A 100%);
-    }
-    #menu .section__label {
-      color: var(--croissant-beige);
-      font-size: 0.8rem;
-    }
-    #menu .section__title {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--cream);
-    }
-    #menu .section__desc {
-      font-size: 0.92rem;
-      color: rgba(255, 251, 247, 0.82);
-      max-width: 100%;
+      margin-bottom: 24px;
+      padding: 0 20px;
     }
 
     .menu-panel {
       max-width: 480px;
       margin: 0 auto;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      overflow: visible;
     }
     .menu-panel__bar {
       position: sticky;
       top: var(--nav-h);
       z-index: 60;
       padding: 12px 16px 14px;
-      margin: 0;
-      background: rgba(247, 244, 240, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--m-line);
+      background: rgba(92, 63, 46, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229, 178, 134, 0.2);
     }
     .menu-panel__bar::before {
       content: 'تصفّح حسب الفئة';
       display: block;
       font-size: 0.72rem;
       font-weight: 500;
-      color: var(--m-text-3);
+      color: rgba(245, 230, 211, 0.65);
       margin-bottom: 10px;
-      padding-right: 2px;
     }
     .menu-filter {
       display: flex;
@@ -679,7 +616,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 2px 4px 4px;
+      padding: 2px 0 4px;
       scroll-snap-type: x mandatory;
     }
     .menu-filter::-webkit-scrollbar { display: none; }
@@ -687,42 +624,36 @@
       flex-shrink: 0;
       scroll-snap-align: start;
       min-height: var(--m-touch);
-      padding: 0 20px;
-      border: none;
+      padding: 0 18px;
+      border: 1px solid rgba(229, 178, 134, 0.3);
       border-radius: var(--m-radius-sm);
-      background: var(--m-surface);
-      color: var(--m-text-2);
+      background: rgba(125, 90, 68, 0.45);
+      color: var(--light-beige);
       font-family: var(--font);
       font-weight: 500;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      box-shadow: var(--m-shadow);
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
     .menu-filter__btn:active { transform: scale(0.97); }
     .menu-filter__btn.active {
-      background: var(--m-accent);
-      color: var(--cream);
+      background: linear-gradient(135deg, var(--croissant-beige), var(--gold));
+      border-color: transparent;
+      color: var(--dark-brown);
       font-weight: 700;
-      box-shadow: 0 6px 24px var(--m-accent-glow);
+      box-shadow: 0 4px 16px rgba(229, 178, 134, 0.35);
     }
 
     .menu-categories {
       padding: 16px 16px 8px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 22px;
     }
     .menu-category {
       scroll-margin-top: calc(var(--nav-h) + 100px);
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      overflow: visible;
-      margin-bottom: 0;
     }
     .menu-category.hidden { display: none; }
     .menu-category__head {
@@ -730,8 +661,6 @@
       align-items: center;
       gap: 12px;
       padding: 0 4px 14px;
-      background: none;
-      border: none;
     }
     .menu-category__icon {
       width: 42px;
@@ -740,82 +669,55 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--m-surface);
+      background: rgba(229, 178, 134, 0.15);
+      border: 1px solid rgba(229, 178, 134, 0.25);
       border-radius: 14px;
-      box-shadow: var(--m-shadow);
-      border: none;
     }
     .menu-category__title {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--m-text);
-      letter-spacing: -0.01em;
+      color: var(--croissant-beige);
     }
-    .menu-sub {
-      padding: 0;
-      margin-bottom: 14px;
-    }
-    .menu-sub:last-child { margin-bottom: 0; padding-bottom: 0; }
-    .menu-category > .menu-sub:first-of-type { padding-top: 0; }
+    .menu-sub { margin-bottom: 14px; }
+    .menu-sub:last-child { margin-bottom: 0; }
     .menu-sub__title {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--m-accent);
-      background: var(--m-accent-soft);
+      color: var(--croissant-beige);
+      background: rgba(229, 178, 134, 0.12);
+      border: 1px solid rgba(229, 178, 134, 0.22);
       padding: 8px 14px;
       border-radius: 10px;
       margin: 0 0 10px;
       display: inline-block;
-      letter-spacing: 0;
-      text-transform: none;
     }
 
     .menu-grid {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: none;
-      border: none;
-      border-radius: 0;
-      margin: 0;
-      overflow: visible;
-    }
-    .menu-sub > .card--combo {
-      margin: 0;
-      border: none;
-      border-radius: var(--m-radius);
-      overflow: visible;
     }
 
     .card {
-      background: var(--m-surface);
+      background: rgba(125, 90, 68, 0.55);
+      border: 1px solid rgba(229, 178, 134, 0.18);
       border-radius: var(--m-radius);
-      box-shadow: var(--m-shadow);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      border: none;
+      opacity: 1;
+      transform: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
-    .card.visible { opacity: 1; transform: translateY(0); }
-    .card + .card { border-top: none; }
-    .card:nth-child(even) { background: var(--m-surface); }
-    .card:active { transform: scale(0.99); }
+    .card.visible { opacity: 1; transform: none; }
+    .card:active {
+      background: rgba(125, 90, 68, 0.75);
+      transform: scale(0.99);
+    }
 
     .card__inner {
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 0;
-      min-height: unset;
       padding: 16px;
     }
-    .card--combo .card__inner,
-    .card:has(.card__prices) .card__inner {
-      padding: 16px;
-    }
-
     .card__header {
-      display: block;
       padding: 0 0 12px;
       border: none;
       text-align: right;
@@ -824,30 +726,19 @@
     .card__name {
       font-size: 1.02rem;
       font-weight: 700;
-      color: var(--m-text);
+      color: var(--cream);
       line-height: 1.55;
       max-width: 100%;
     }
     .card--combo .card__name {
-      font-size: 1.1rem;
-      color: var(--m-accent-deep);
-      padding-bottom: 4px;
+      font-size: 1.08rem;
+      color: var(--croissant-beige);
     }
-
     .card__footer {
       width: 100%;
-      padding: 0;
-      border-top: 1px solid var(--m-line);
       padding-top: 12px;
-      margin-top: 0;
+      border-top: 1px solid rgba(229, 178, 134, 0.15);
     }
-    .card--combo .card__footer {
-      border-top: 1px solid var(--m-line);
-      padding-top: 12px;
-      margin-top: 4px;
-    }
-    .card--combo .card__header { padding-bottom: 0; }
-
     .card__price {
       display: flex;
       align-items: center;
@@ -856,55 +747,49 @@
       flex-wrap: wrap;
     }
     .card__amount-row {
-      background: var(--m-accent-soft);
-      padding: 10px 18px;
+      background: rgba(229, 178, 134, 0.2);
+      border: 1px solid rgba(229, 178, 134, 0.35);
+      padding: 8px 16px;
       border-radius: 12px;
-      border: none;
     }
     .card__amount {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      color: var(--m-accent-deep);
+      color: var(--croissant-beige);
     }
     .card__currency {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--m-accent);
+      color: var(--gold);
     }
     .card__unit {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      color: var(--m-text-3);
-      background: var(--m-surface-2);
-      padding: 8px 12px;
-      border-radius: 10px;
+      color: rgba(245, 230, 211, 0.75);
+      background: rgba(0, 0, 0, 0.15);
+      padding: 6px 12px;
+      border-radius: 8px;
       border: none;
     }
-
     .card__flavors {
       display: flex;
       flex-wrap: nowrap;
       gap: 8px;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 0 0 14px;
-      margin: 0 -4px;
-      padding-left: 4px;
-      padding-right: 4px;
+      padding-bottom: 14px;
     }
     .card__flavors::-webkit-scrollbar { display: none; }
     .card__flavors span {
       flex-shrink: 0;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
-      color: var(--m-text-2);
-      padding: 8px 16px;
-      background: var(--m-surface-2);
-      border: 1px solid var(--m-line);
+      color: var(--light-beige);
+      padding: 7px 14px;
+      background: rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(229, 178, 134, 0.2);
       border-radius: 999px;
     }
-
     .card__prices {
       display: flex;
       flex-direction: column;
@@ -916,32 +801,31 @@
       align-items: center;
       justify-content: space-between;
       min-height: 44px;
-      padding: 10px 16px;
-      background: var(--m-surface-2);
-      border: 1px solid var(--m-line);
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(229, 178, 134, 0.18);
       border-radius: 12px;
     }
     .price-pill__label {
       font-size: 0.88rem;
       font-weight: 500;
-      color: var(--m-text-2);
+      color: rgba(245, 230, 211, 0.8);
     }
     .price-pill__value {
       font-size: 1.05rem;
       font-weight: 800;
-      color: var(--m-accent-deep);
+      color: var(--croissant-beige);
     }
     .price-pill em {
       font-style: normal;
       font-weight: 500;
-      color: var(--m-text-2);
+      color: rgba(245, 230, 211, 0.8);
       font-size: 0.88rem;
     }
 
     @media (min-width: 520px) {
       .menu-categories { padding: 20px 24px; }
       .menu-panel__bar { padding: 14px 24px 16px; }
-      #menu .section__header { padding: 36px 24px 12px; }
     }
 
     /* ─── Contact ─── */
@@ -1197,34 +1081,9 @@
           <a href="#contact" class="btn btn--outline">تواصل معنا</a>
         </div>
       </div>
-      <a href="#features" class="hero__scroll" aria-label="انتقل للأسفل">
+      <a href="#menu" class="hero__scroll" aria-label="انتقل للقائمة">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
       </a>
-    </section>
-
-    <section class="features" id="features" aria-label="مميزاتنا">
-      <div class="features__grid">
-        <article class="feature reveal">
-          <span class="feature__icon" aria-hidden="true">🌾</span>
-          <h3 class="feature__title">مكونات طبيعية</h3>
-          <p class="feature__text">زبدة فرنسية أصيلة ودقيق فاخر في كل قطعة</p>
-        </article>
-        <article class="feature reveal">
-          <span class="feature__icon" aria-hidden="true">⏰</span>
-          <h3 class="feature__title">خبز يومي</h3>
-          <p class="feature__text">كرواسون طازج من الفرن كل صباح</p>
-        </article>
-        <article class="feature reveal">
-          <span class="feature__icon" aria-hidden="true">👨‍🍳</span>
-          <h3 class="feature__title">حرفية عالية</h3>
-          <p class="feature__text">وصفات تقليدية بأيدي خبراء الحلويات</p>
-        </article>
-        <article class="feature reveal">
-          <span class="feature__icon" aria-hidden="true">💛</span>
-          <h3 class="feature__title">تجربة مميزة</h3>
-          <p class="feature__text">نكهات متنوعة تناسب كل الأذواق</p>
-        </article>
-      </div>
     </section>
 
     <section class="section section--alt" id="menu" aria-labelledby="menu-title">
@@ -1234,7 +1093,7 @@
         <p class="section__desc">مرّر للتصفية واختر ما يشهيّك</p>
       </div>
 
-      <div class="menu-panel reveal">
+      <div class="menu-panel">
         <div class="menu-panel__bar">
         <div class="menu-filter" role="tablist" aria-label="تصفية القائمة">
           <button class="menu-filter__btn active" type="button" data-filter="all" role="tab" aria-selected="true">الكل</button>
@@ -1640,7 +1499,7 @@
       sections.forEach(s => observerNav.observe(s));
 
       /* Reveal on scroll */
-      const revealEls = document.querySelectorAll('.reveal, .card');
+      const revealEls = document.querySelectorAll('.reveal');
       const revealObs = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1737,6 +1596,7 @@
         });
       }
       enhanceMenuCards();
+      document.querySelectorAll('.card').forEach(card => card.classList.add('visible'));
     })();
   </script>
 </body>
