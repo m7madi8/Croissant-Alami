@@ -13,7 +13,7 @@
   <title>كرواسون العلامي | قائمة الطعام</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --dark-brown: #5C3F2E;
@@ -30,23 +30,23 @@
       --radius-lg: 24px;
       --nav-h: 72px;
       --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      --font: 'Cairo', system-ui, sans-serif;
-      /* Menu palette */
-      --menu-paper: #FFFDF9;
-      --menu-paper-2: #F8F1E8;
-      --menu-ink: #2E2118;
-      --menu-ink-soft: #5C4A3D;
-      --menu-ink-muted: #8A7768;
-      --menu-line: #E5D9CC;
-      --menu-line-soft: #F0E8DE;
-      --menu-accent: #7D5A44;
-      --menu-accent-dark: #4A3225;
-      --menu-gold: #C9956A;
-      --menu-gold-light: #E8C9A0;
-      --menu-price-bg: #F3E6D6;
-      --menu-price-text: #6B4428;
-      --menu-chip-bg: #F5EDE3;
-      --menu-chip-border: #DEC9B4;
+      --font: 'Tajawal', system-ui, sans-serif;
+      --m-bg: #F7F4F0;
+      --m-surface: #FFFFFF;
+      --m-surface-2: #FBF9F6;
+      --m-text: #3D3229;
+      --m-text-2: #6B5E52;
+      --m-text-3: #A09488;
+      --m-accent: #9A7355;
+      --m-accent-deep: #6B4D38;
+      --m-accent-soft: #EDE6DC;
+      --m-accent-glow: rgba(154, 115, 85, 0.12);
+      --m-line: #EBE4DB;
+      --m-radius: 18px;
+      --m-radius-sm: 14px;
+      --m-shadow: 0 2px 20px rgba(61, 50, 41, 0.06);
+      --m-shadow-lg: 0 8px 32px rgba(61, 50, 41, 0.1);
+      --m-touch: 48px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -616,317 +616,332 @@
       margin: 0 auto;
     }
 
-    /* ─── Menu redesign ─── */
+    /* ─── Menu — mobile-first app style ─── */
     #menu {
-      padding-bottom: clamp(80px, 12vw, 110px);
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(229, 178, 134, 0.12) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.18) 100%);
+      padding: 0 0 clamp(72px, 14vw, 96px);
+      max-width: none;
+      background: var(--m-bg);
     }
-    #menu .section__header { margin-bottom: 40px; }
-    #menu .section__label { color: var(--menu-gold-light); }
+    #menu.section--alt {
+      background: var(--m-bg);
+    }
+    #menu .section__header {
+      margin-bottom: 20px;
+      padding: 28px 20px 8px;
+      background: linear-gradient(180deg, var(--dark-brown) 0%, #6B4E3A 100%);
+    }
+    #menu .section__label {
+      color: var(--croissant-beige);
+      font-size: 0.8rem;
+    }
     #menu .section__title {
-      font-weight: 700;
+      font-size: 1.65rem;
+      font-weight: 800;
       color: var(--cream);
     }
-    #menu .section__desc { color: rgba(245, 230, 211, 0.88); }
+    #menu .section__desc {
+      font-size: 0.92rem;
+      color: rgba(255, 251, 247, 0.82);
+      max-width: 100%;
+    }
 
     .menu-panel {
-      max-width: 880px;
+      max-width: 480px;
       margin: 0 auto;
-      background: var(--menu-paper);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px var(--menu-line),
-        0 32px 80px rgba(30, 20, 12, 0.35);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
     }
     .menu-panel__bar {
       position: sticky;
       top: var(--nav-h);
-      z-index: 50;
-      padding: 16px 20px;
-      background: linear-gradient(180deg, var(--menu-paper) 85%, rgba(255,253,249,0.97) 100%);
-      border-bottom: 1px solid var(--menu-line);
-      backdrop-filter: blur(10px);
+      z-index: 60;
+      padding: 12px 16px 14px;
+      margin: 0;
+      background: rgba(247, 244, 240, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--m-line);
+    }
+    .menu-panel__bar::before {
+      content: 'تصفّح حسب الفئة';
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--m-text-3);
+      margin-bottom: 10px;
+      padding-right: 2px;
     }
     .menu-filter {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 2px 4px 4px;
+      scroll-snap-type: x mandatory;
+    }
+    .menu-filter::-webkit-scrollbar { display: none; }
+    .menu-filter__btn {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      min-height: var(--m-touch);
+      padding: 0 20px;
+      border: none;
+      border-radius: var(--m-radius-sm);
+      background: var(--m-surface);
+      color: var(--m-text-2);
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: var(--m-shadow);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .menu-filter__btn:active { transform: scale(0.97); }
+    .menu-filter__btn.active {
+      background: var(--m-accent);
+      color: var(--cream);
+      font-weight: 700;
+      box-shadow: 0 6px 24px var(--m-accent-glow);
+    }
+
+    .menu-categories {
+      padding: 16px 16px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .menu-category {
+      scroll-margin-top: calc(var(--nav-h) + 100px);
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+      margin-bottom: 0;
+    }
+    .menu-category.hidden { display: none; }
+    .menu-category__head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 4px 14px;
+      background: none;
+      border: none;
+    }
+    .menu-category__icon {
+      width: 42px;
+      height: 42px;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--m-surface);
+      border-radius: 14px;
+      box-shadow: var(--m-shadow);
+      border: none;
+    }
+    .menu-category__title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--m-text);
+      letter-spacing: -0.01em;
+    }
+    .menu-sub {
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    .menu-sub:last-child { margin-bottom: 0; padding-bottom: 0; }
+    .menu-category > .menu-sub:first-of-type { padding-top: 0; }
+    .menu-sub__title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--m-accent);
+      background: var(--m-accent-soft);
+      padding: 8px 14px;
+      border-radius: 10px;
+      margin: 0 0 10px;
+      display: inline-block;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: none;
+      border: none;
+      border-radius: 0;
+      margin: 0;
+      overflow: visible;
+    }
+    .menu-sub > .card--combo {
+      margin: 0;
+      border: none;
+      border-radius: var(--m-radius);
+      overflow: visible;
+    }
+
+    .card {
+      background: var(--m-surface);
+      border-radius: var(--m-radius);
+      box-shadow: var(--m-shadow);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      border: none;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card + .card { border-top: none; }
+    .card:nth-child(even) { background: var(--m-surface); }
+    .card:active { transform: scale(0.99); }
+
+    .card__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      min-height: unset;
+      padding: 16px;
+    }
+    .card--combo .card__inner,
+    .card:has(.card__prices) .card__inner {
+      padding: 16px;
+    }
+
+    .card__header {
+      display: block;
+      padding: 0 0 12px;
+      border: none;
+      text-align: right;
+    }
+    .card__header::after { display: none; }
+    .card__name {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--m-text);
+      line-height: 1.55;
+      max-width: 100%;
+    }
+    .card--combo .card__name {
+      font-size: 1.1rem;
+      color: var(--m-accent-deep);
+      padding-bottom: 4px;
+    }
+
+    .card__footer {
+      width: 100%;
+      padding: 0;
+      border-top: 1px solid var(--m-line);
+      padding-top: 12px;
+      margin-top: 0;
+    }
+    .card--combo .card__footer {
+      border-top: 1px solid var(--m-line);
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+    .card--combo .card__header { padding-bottom: 0; }
+
+    .card__price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .card__amount-row {
+      background: var(--m-accent-soft);
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: none;
+    }
+    .card__amount {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--m-accent-deep);
+    }
+    .card__currency {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--m-accent);
+    }
+    .card__unit {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--m-text-3);
+      background: var(--m-surface-2);
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .card__flavors {
       display: flex;
       flex-wrap: nowrap;
       gap: 8px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 4px 2px;
+      padding: 0 0 14px;
+      margin: 0 -4px;
+      padding-left: 4px;
+      padding-right: 4px;
     }
-    .menu-filter::-webkit-scrollbar { display: none; }
-    .menu-filter__btn {
-      flex-shrink: 0;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--menu-line);
-      background: var(--menu-paper-2);
-      color: var(--menu-ink-soft);
-      font-family: var(--font);
-      font-weight: 600;
-      font-size: 0.86rem;
-      cursor: pointer;
-      transition: all 0.22s ease;
-    }
-    .menu-filter__btn:hover {
-      border-color: var(--menu-gold);
-      color: var(--menu-accent);
-      background: #fff;
-    }
-    .menu-filter__btn.active {
-      background: linear-gradient(135deg, var(--menu-accent) 0%, var(--menu-accent-dark) 100%);
-      border-color: transparent;
-      color: var(--cream);
-      box-shadow: 0 6px 20px rgba(74, 50, 37, 0.28);
-    }
-    .menu-categories {
-      padding: 8px 20px 28px;
-    }
-    .menu-category {
-      margin-bottom: 20px;
-      scroll-margin-top: calc(var(--nav-h) + 80px);
-      background: #fff;
-      border: 1px solid var(--menu-line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(46, 33, 24, 0.04);
-    }
-    .menu-category.hidden { display: none; }
-    .menu-category:last-child { margin-bottom: 0; }
-    .menu-category__head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 18px;
-      background: linear-gradient(90deg, var(--menu-paper-2) 0%, #fff 100%);
-      border-bottom: 1px solid var(--menu-line-soft);
-    }
-    .menu-category__icon {
-      font-size: 1.35rem;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, var(--menu-gold-light), var(--menu-gold));
-      border-radius: 12px;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(201, 149, 106, 0.35);
-    }
-    .menu-category__title {
-      font-family: 'Noto Naskh Arabic', var(--font);
-      font-size: 1.22rem;
-      font-weight: 700;
-      color: var(--menu-ink);
-    }
-    .menu-sub {
-      padding: 8px 14px 4px;
-    }
-    .menu-category > .menu-sub:first-of-type {
-      padding-top: 14px;
-    }
-    .menu-sub:last-child { padding-bottom: 14px; }
-    .menu-sub__title {
-      font-family: var(--font);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--menu-accent);
-      padding: 0 4px 10px;
-      margin-bottom: 0;
-      border: none;
-      background: none;
-      display: block;
-    }
-    .menu-sub__title::before { display: none; }
-    .menu-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      background: #fff;
-      border-radius: 12px;
-      border: 1px solid var(--menu-line-soft);
-      overflow: hidden;
-      margin: 0 4px 12px;
-    }
-    .menu-sub > .card--combo:only-child,
-    .menu-sub > .card--combo:first-child:last-child {
-      margin: 0 4px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--menu-line-soft);
-    }
-    .menu-sub > .card--combo {
-      margin: 0 4px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--menu-line-soft);
-      overflow: hidden;
-    }
-    .card {
-      position: relative;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.4s ease, transform 0.4s ease, background 0.15s ease;
-      background: #fff;
-    }
-    .card.visible { opacity: 1; transform: translateY(0); }
-    .card:nth-child(even) { background: var(--menu-paper); }
-    .card + .card { border-top: 1px solid var(--menu-line-soft); }
-    .card:hover { background: var(--menu-paper-2); }
-    .card__inner {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      min-height: 54px;
-      padding: 2px 14px;
-    }
-    .card:has(.card__prices) .card__inner,
-    .card--combo .card__inner {
-      flex-direction: column;
-      align-items: stretch;
-      min-height: unset;
-      padding: 14px 16px;
-    }
-    .card__header {
-      flex: 1;
-      display: flex;
-      align-items: baseline;
-      padding: 10px 0;
-      min-width: 0;
-      border: none;
-      text-align: right;
-    }
-    .card:has(.card__prices) .card__header,
-    .card--combo .card__header { padding: 0 0 8px; }
-    .card:has(.card__prices) .card__header::after,
-    .card--combo .card__header::after { display: none; }
-    .card__header::after {
-      content: '';
-      flex: 1;
-      min-width: 16px;
-      margin: 0 10px 4px;
-      border-bottom: 1px dotted var(--menu-line);
-    }
-    .card__name {
-      font-family: 'Noto Naskh Arabic', var(--font);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--menu-ink);
-      line-height: 1.5;
-      margin: 0;
-      flex-shrink: 0;
-      max-width: 72%;
-    }
-    .card--combo .card__name {
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--menu-accent);
-      max-width: 100%;
-    }
-    .card__footer {
-      flex-shrink: 0;
-      padding: 6px 0;
-      background: none;
-    }
-    .card:has(.card__prices) .card__footer,
-    .card--combo .card__footer { width: 100%; padding: 0; }
-    .card__price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-      justify-content: flex-end;
-    }
-    .card__amount-row {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 2px;
-      background: var(--menu-price-bg);
-      padding: 6px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--menu-chip-border);
-    }
-    .card__amount {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--menu-price-text);
-      font-variant-numeric: tabular-nums;
-    }
-    .card__currency {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--menu-gold);
-    }
-    .card__unit {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--menu-ink-muted);
-      background: var(--menu-chip-bg);
-      padding: 5px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--menu-line);
-      white-space: nowrap;
-    }
-    .card__flavors {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 0 0 12px;
-    }
+    .card__flavors::-webkit-scrollbar { display: none; }
     .card__flavors span {
-      font-size: 0.82rem;
+      flex-shrink: 0;
+      font-size: 0.85rem;
       font-weight: 500;
-      color: var(--menu-ink-soft);
-      padding: 6px 12px;
-      background: var(--menu-chip-bg);
-      border: 1px solid var(--menu-chip-border);
-      border-radius: 8px;
+      color: var(--m-text-2);
+      padding: 8px 16px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-line);
+      border-radius: 999px;
     }
+
     .card__prices {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 8px;
       width: 100%;
-    }
-    @media (max-width: 400px) {
-      .card__prices { grid-template-columns: 1fr; }
     }
     .price-pill {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--menu-paper-2);
-      border: 1px solid var(--menu-line);
-      border-radius: 10px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .price-pill:hover {
-      border-color: var(--menu-gold);
-      background: var(--menu-price-bg);
+      min-height: 44px;
+      padding: 10px 16px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-line);
+      border-radius: 12px;
     }
     .price-pill__label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--menu-ink-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--m-text-2);
     }
     .price-pill__value {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      color: var(--menu-price-text);
-      font-variant-numeric: tabular-nums;
+      color: var(--m-accent-deep);
     }
     .price-pill em {
       font-style: normal;
-      font-weight: 600;
-      color: var(--menu-ink-muted);
-      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--m-text-2);
+      font-size: 0.88rem;
+    }
+
+    @media (min-width: 520px) {
+      .menu-categories { padding: 20px 24px; }
+      .menu-panel__bar { padding: 14px 24px 16px; }
+      #menu .section__header { padding: 36px 24px 12px; }
     }
 
     /* ─── Contact ─── */
@@ -1096,22 +1111,16 @@
       :root { --nav-h: 64px; }
       .hero__actions { flex-direction: column; width: 100%; }
       .hero__actions .btn { width: 100%; }
-      .menu-panel { border-radius: 18px; }
-      .menu-panel__bar { padding: 12px 14px; }
-      .menu-categories { padding: 6px 12px 20px; }
-      .menu-category__head { padding: 14px; }
-      .menu-filter__btn { padding: 9px 14px; font-size: 0.82rem; }
-      .card__name { font-size: 0.94rem; max-width: 58%; }
-      .card__amount { font-size: 1.08rem; }
-      .card__header::after { margin: 0 6px 4px; }
+      .menu-filter__btn { padding: 0 16px; font-size: 0.88rem; }
       .back-top { bottom: 16px; left: 16px; width: 44px; height: 44px; }
     }
 
     @media print {
       .nav, .mob-menu, .back-top, .hero__scroll, .menu-filter, .skip-link { display: none !important; }
       body { background: white; color: black; }
-      .menu-panel, .menu-panel__bar { box-shadow: none; }
-      .menu-panel { border: 1px solid #ddd; }
+      #menu { background: #fff; }
+      .menu-panel__bar { position: static; }
+      .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
       .card { break-inside: avoid; opacity: 1 !important; transform: none !important; }
       .hero { min-height: auto; padding-top: 20px; }
     }
@@ -1222,23 +1231,23 @@
       <div class="section__header reveal">
         <span class="section__label">قائمة الطعام</span>
         <h2 class="section__title" id="menu-title">قائمة الطعام</h2>
-        <p class="section__desc">تشكيلة منتقاة بعناية — أسعار واضحة وتجربة قراءة مريحة</p>
+        <p class="section__desc">مرّر للتصفية واختر ما يشهيّك</p>
       </div>
 
       <div class="menu-panel reveal">
         <div class="menu-panel__bar">
         <div class="menu-filter" role="tablist" aria-label="تصفية القائمة">
           <button class="menu-filter__btn active" type="button" data-filter="all" role="tab" aria-selected="true">الكل</button>
-          <button class="menu-filter__btn" type="button" data-filter="معجنات" role="tab" aria-selected="false">معجنات</button>
-          <button class="menu-filter__btn" type="button" data-filter="مخبوزات" role="tab" aria-selected="false">مخبوزات</button>
-          <button class="menu-filter__btn" type="button" data-filter="بوريكس" role="tab" aria-selected="false">بوريكس</button>
-          <button class="menu-filter__btn" type="button" data-filter="كرواسون" role="tab" aria-selected="false">كرواسون</button>
-          <button class="menu-filter__btn" type="button" data-filter="دونات" role="tab" aria-selected="false">دونات</button>
-          <button class="menu-filter__btn" type="button" data-filter="عقوت" role="tab" aria-selected="false">عقوت</button>
-          <button class="menu-filter__btn" type="button" data-filter="كت كات" role="tab" aria-selected="false">كت كات</button>
-          <button class="menu-filter__btn" type="button" data-filter="بيني فور" role="tab" aria-selected="false">بيني فور</button>
-          <button class="menu-filter__btn" type="button" data-filter="حلويات" role="tab" aria-selected="false">حلويات</button>
-          <button class="menu-filter__btn" type="button" data-filter="مشروبات" role="tab" aria-selected="false">مشروبات</button>
+          <button class="menu-filter__btn" type="button" data-filter="معجنات" role="tab" aria-selected="false">🍕 معجنات</button>
+          <button class="menu-filter__btn" type="button" data-filter="مخبوزات" role="tab" aria-selected="false">🍞 مخبوز</button>
+          <button class="menu-filter__btn" type="button" data-filter="بوريكس" role="tab" aria-selected="false">🥐 بوريك</button>
+          <button class="menu-filter__btn" type="button" data-filter="كرواسون" role="tab" aria-selected="false">🥐 كرواس</button>
+          <button class="menu-filter__btn" type="button" data-filter="دونات" role="tab" aria-selected="false">🍩 دونات</button>
+          <button class="menu-filter__btn" type="button" data-filter="عقوت" role="tab" aria-selected="false">🎂 عقوت</button>
+          <button class="menu-filter__btn" type="button" data-filter="كت كات" role="tab" aria-selected="false">🍫 كتكات</button>
+          <button class="menu-filter__btn" type="button" data-filter="بيني فور" role="tab" aria-selected="false">🍰 بيني</button>
+          <button class="menu-filter__btn" type="button" data-filter="حلويات" role="tab" aria-selected="false">🍪 حلويات</button>
+          <button class="menu-filter__btn" type="button" data-filter="مشروبات" role="tab" aria-selected="false">☕ مشروب</button>
         </div>
         </div>
 
