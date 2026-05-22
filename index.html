@@ -561,6 +561,11 @@
       color: var(--gold);
       text-transform: uppercase;
       margin-bottom: 12px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a.section__label:hover {
+      color: var(--croissant-beige);
     }
     .section__title {
       font-size: clamp(1.75rem, 4vw, 2.75rem);
@@ -616,6 +621,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      scroll-padding-inline: 16px;
       padding: 2px 0 4px;
       scroll-snap-type: x mandatory;
     }
@@ -1088,7 +1094,7 @@
 
     <section class="section section--alt" id="menu" aria-labelledby="menu-title">
       <div class="section__header reveal">
-        <span class="section__label">قائمة الطعام</span>
+        <a href="#hero" class="section__label">الرئيسية</a>
         <h2 class="section__title" id="menu-title">قائمة الطعام</h2>
         <p class="section__desc">مرّر للتصفية واختر ما يشهيّك</p>
       </div>
@@ -1513,6 +1519,21 @@
       /* Menu filter */
       const filterBtns = document.querySelectorAll('.menu-filter__btn');
       const categories = document.querySelectorAll('.menu-category');
+      const menuFilterStrip = document.querySelector('.menu-filter');
+      const menuStickyBar = document.querySelector('.menu-panel__bar');
+
+      function alignFilterTab(btn) {
+        if (!menuFilterStrip || !btn) return;
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
+
+      function scrollToCategory(cat) {
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
+        const barH = menuStickyBar ? menuStickyBar.offsetHeight : 0;
+        const top = cat.getBoundingClientRect().top + window.scrollY - navH - barH - 12;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }
+
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const filter = btn.dataset.filter;
@@ -1520,13 +1541,18 @@
             b.classList.toggle('active', b === btn);
             b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
           });
+          alignFilterTab(btn);
+          let targetCat = null;
           categories.forEach(cat => {
             const show = filter === 'all' || cat.dataset.category === filter;
             cat.classList.toggle('hidden', !show);
-            if (show && filter !== 'all') {
-              setTimeout(() => cat.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-            }
+            if (show && filter !== 'all') targetCat = cat;
           });
+          if (targetCat) {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => scrollToCategory(targetCat));
+            });
+          }
         });
       });
 
